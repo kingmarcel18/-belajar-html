@@ -11,3 +11,13 @@ function toggleMode() {
         btn.textContent = '🌙 Dark Mode';
     }
 }
+
+async function getJoke() {
+    const jokeText = document.getElementById('joke-text');
+    jokeText.textContent = 'Loading...';
+    
+    const response = await fetch('https://official-joke-api.appspot.com/random_joke');
+    const data = await response.json();
+    
+    jokeText.textContent = data.setup + ' ... ' + data.punchline;
+}
